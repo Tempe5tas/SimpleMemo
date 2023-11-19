@@ -1,0 +1,20 @@
+Debug: false
+
+Service:
+  Port: 8080
+
+Database:
+  # Driver available: mysql, sqlite.
+  Driver: sqlite
+  Host: 127.0.0.1
+  Port: 3306
+  User: root
+  Password: 114514
+  Name: memo
+
+
+Redis:
+  Host: 127.0.0.1:6379
+  Port:
+  Password:
+  Database:
