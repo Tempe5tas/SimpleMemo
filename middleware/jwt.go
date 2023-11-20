@@ -25,8 +25,7 @@ func IssueToken(ID uint) (string, error) {
 			NotBefore: time.Now().Unix(),
 			ExpiresAt: time.Now().Add(time.Duration(viper.GetInt("JWT.Expire")) * time.Second).Unix(),
 		}}
-	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
-	return token.SignedString(viper.GetString("JWT.Secret"))
+	return jwt.NewWithClaims(jwt.SigningMethodHS256, claim).SignedString([]byte(viper.GetString("JWT.Secret")))
 }
 
 func ParseToken(str string) (*MyClaims, error) {
@@ -68,7 +67,7 @@ func ValidateToken(c *gin.Context) {
 		return
 	}
 	if time.Now().Unix() > claim.ExpiresAt {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token exipred, please login."})
+		c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token expired, please login."})
 		c.Abort()
 		return
 	}

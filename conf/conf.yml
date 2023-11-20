@@ -1,6 +1,7 @@
 Debug: false
 
 Service:
+  IP: 0.0.0.0
   Port: 8080
 
 Database:
@@ -25,3 +26,4 @@ JWT:
   Issuer: Thema Thrakes
   Secret: Come As a Lightning
   Expire: 7200
+

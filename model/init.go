@@ -1,6 +1,7 @@
 package model
 
 import (
+	"SimpleMemo/conf"
 	"fmt"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
@@ -11,11 +12,11 @@ import (
 
 var DB *gorm.DB
 
-func Init(dsn string) {
+func Init() {
 	// Connect to a database
 	switch driver := viper.Get("Database.Driver").(string); driver {
 	case "mysql":
-		db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+		db, err := gorm.Open(mysql.Open(conf.DSN), &gorm.Config{})
 		if err != nil {
 			panic(fmt.Errorf("error reading MySQL database: %w", err))
 		}
