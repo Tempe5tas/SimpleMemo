@@ -12,9 +12,16 @@ Database:
   Password: 114514
   Name: memo
 
-
 Redis:
+  Enable: false
   Host: 127.0.0.1:6379
   Port:
   Password:
   Database:
+
+
+JWT:
+  # Time unit: second
+  Issuer: Thema Thrakes
+  Secret: Come As a Lightning
+  Expire: 7200

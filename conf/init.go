@@ -1,4 +1,4 @@
-package init
+package conf
 
 import (
 	"SimpleMemo/model"

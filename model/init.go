@@ -39,7 +39,9 @@ func Init(dsn string) {
 
 func migration() {
 	// Auto migrate objects
-	err := DB.Set("gorm:table_options", "charset=utf8mb4").AutoMigrate(&User{}, &Memo{})
+	//err := DB.Set("gorm:table_options", "charset=utf8mb4").
+	//	AutoMigrate(&User{}, &Memo{})
+	err := DB.AutoMigrate(&User{}, &Memo{})
 	if err != nil {
 		panic(fmt.Errorf("error configuring database structure: %w", err))
 	}

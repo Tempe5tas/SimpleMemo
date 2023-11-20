@@ -2,8 +2,11 @@ package router
 
 import "github.com/gin-gonic/gin"
 
-func init() {
+func Init() *gin.Engine {
 	r := gin.Default()
+	r.POST("/user/register", UserRegister)
+	r.POST("/user/login", func(c *gin.Context) {
 
-	r.Run(":8080")
+	})
+	return r
 }
