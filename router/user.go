@@ -129,6 +129,7 @@ func UserUpdate(c *gin.Context) {
 			Code: http.StatusBadRequest,
 			Msg:  "no user info found in token",
 		})
+		return
 	}
 	var user *model.User
 	if err := model.DB.Take(&user, "ID = ?", ID).Error; err != nil {

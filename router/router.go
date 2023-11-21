@@ -25,9 +25,9 @@ func Init() *gin.Engine {
 	{
 		memoGroup.Use(middleware.ValidateToken)
 		memoGroup.POST("create", MemoCreate)
-		memoGroup.GET("list")
-		memoGroup.PUT("update")
-		memoGroup.DELETE("delete")
+		memoGroup.GET("list", MemoRetrieve)
+		memoGroup.PUT("update", MemoUpdate)
+		memoGroup.DELETE("delete", MemoDelete)
 	}
 	return r
 }

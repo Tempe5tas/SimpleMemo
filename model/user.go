@@ -8,7 +8,7 @@ type User struct {
 	Password  string `binding:"min=8,max=24"`
 	Email     string `binding:"email"`
 	CreatedAt time.Time
-	Memo      []Memo `gorm:"foreignKey:UID"`
+	Memo      []Memo `gorm:"foreignKey:UID" json:"-"`
 }
 
 type UserLogin struct {
