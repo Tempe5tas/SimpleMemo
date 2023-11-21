@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	response "SimpleMemo/serializer"
 	"errors"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
@@ -46,18 +47,27 @@ func ParseToken(str string) (*MyClaims, error) {
 func ValidateToken(c *gin.Context) {
 	tokenStr := c.Request.Header.Get("token")
 	if tokenStr == "" {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token missing, please login."})
+		c.JSON(http.StatusUnauthorized, response.Response{
+			Code: http.StatusUnauthorized,
+			Msg:  "token missing, please login",
+		})
 		c.Abort()
 		return
 	}
 	claim, err := ParseToken(tokenStr)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": err.Error()})
+		c.JSON(http.StatusUnauthorized, response.Response{
+			Code: http.StatusUnauthorized,
+			Msg:  err.Error(),
+		})
 		c.Abort()
 		return
 	}
 	if viper.GetString("JWT.Issuer") != claim.Issuer {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": "Invalid token issuer, validation aborted."})
+		c.JSON(http.StatusUnauthorized, response.Response{
+			Code: http.StatusUnauthorized,
+			Msg:  "invalid token issuer, validation aborted",
+		})
 		c.Abort()
 		return
 	}

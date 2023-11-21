@@ -1,7 +1,7 @@
-package serializer
+package response
 
 type Response struct {
-	Code int
-	Msg  string
-	Data any
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+	Data any    `json:"data"`
 }
