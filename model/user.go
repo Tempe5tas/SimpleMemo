@@ -4,25 +4,14 @@ import "time"
 
 type User struct {
 	ID        uint
-	Name      string
-	Password  string
-	Email     string
+	Name      string `binding:"min=3,max=12"`
+	Password  string `binding:"min=8,max=24"`
+	Email     string `binding:"email"`
 	CreatedAt time.Time
 	Memo      []Memo `gorm:"foreignKey:UID"`
 }
 
-type TokenBody struct {
-	ID   int
-	Data string
-}
-
-type RegForm struct {
-	Name     string `binding:"required,min=3,max=20"`
-	Password string `binding:"required,min=8,max=24"`
-	Email    string `binding:"required,email,max=30"`
-}
-
-type LoginForm struct {
-	Name     string `binding:"required,min=3,max=20"`
-	Password string `binding:"required,min=8,max=24"`
+type UserLogin struct {
+	Name     string `binding:"min=3,max=12"`
+	Password string `binding:"min=8,max=24"`
 }

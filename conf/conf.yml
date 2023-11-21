@@ -20,10 +20,8 @@ Redis:
   Password:
   Database:
 
-
 JWT:
   # Time unit: second
   Issuer: Thema Thrakes
   Secret: Come As a Lightning
   Expire: 7200
-

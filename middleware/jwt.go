@@ -30,7 +30,7 @@ func IssueToken(ID uint) (string, error) {
 
 func ParseToken(str string) (*MyClaims, error) {
 	token, err := jwt.ParseWithClaims(str, &MyClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return viper.GetString("JWT.Secret"), nil
+		return []byte(viper.GetString("JWT.Secret")), nil
 	})
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func ValidateToken(c *gin.Context) {
 	}
 	claim, err := ParseToken(tokenStr)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": err})
+		c.JSON(http.StatusUnauthorized, gin.H{"msg": err.Error()})
 		c.Abort()
 		return
 	}
@@ -61,16 +61,16 @@ func ValidateToken(c *gin.Context) {
 		c.Abort()
 		return
 	}
-	if time.Now().Unix() < claim.NotBefore {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token not activated yet, please retry."})
-		c.Abort()
-		return
-	}
-	if time.Now().Unix() > claim.ExpiresAt {
-		c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token expired, please login."})
-		c.Abort()
-		return
-	}
+	//if time.Now().Unix() < claim.NotBefore {
+	//	c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token not activated yet, please retry."})
+	//	c.Abort()
+	//	return
+	//}
+	//if time.Now().Unix() > claim.ExpiresAt {
+	//	c.JSON(http.StatusUnauthorized, gin.H{"msg": "Token expired, please login."})
+	//	c.Abort()
+	//	return
+	//}
 	c.Set("ID", claim.ID)
 	c.Next()
 }
