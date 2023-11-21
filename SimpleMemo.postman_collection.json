@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "6975e53f-594a-4a0e-8ea7-f19848eaf039",
+		"name": "SimpleMemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31065408"
+	},
+	"item": [
+		{
+			"name": "UserRegister",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "1919810",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "1919810@qq.com",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "1145141919810",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8080/user/register"
+			},
+			"response": []
+		},
+		{
+			"name": "UserLogin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Message</th>\r",
+							"        <th>Token</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    <tr>\r",
+							"        <td>{{response.msg}}</td>\r",
+							"        <td>{{response.token}}</td>\r",
+							"    </tr>\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return { response: pm.response.json() }\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "cykablyat",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "1145141919810",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8080/user/login"
+			},
+			"response": []
+		},
+		{
+			"name": "UserProfile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiZXhwIjoxNzAwNTg0ODc1LCJpYXQiOjE3MDA1Nzc2NzUsImlzcyI6IlRoZW1hIFRocmFrZXMiLCJuYmYiOjE3MDA1Nzc2NzV9.5jRysYJh_22PLg5m2Zw_QKy15BJuYiQFdbiXEPesOV8",
+						"type": "text"
+					}
+				],
+				"url": "127.0.0.1:8080/user/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "UserUpdate",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiZXhwIjoxNzAwNTg0ODc1LCJpYXQiOjE3MDA1Nzc2NzUsImlzcyI6IlRoZW1hIFRocmFrZXMiLCJuYmYiOjE3MDA1Nzc2NzV9.5jRysYJh_22PLg5m2Zw_QKy15BJuYiQFdbiXEPesOV8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Name",
+							"value": "cykablyat",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "Password",
+							"value": "1145141919810",
+							"type": "text"
+						},
+						{
+							"key": "PrevPassword",
+							"value": "1145141919",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8080/user/profile/update"
+			},
+			"response": []
+		},
+		{
+			"name": "MemoCreate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiZXhwIjoxNzAwNTg0ODc1LCJpYXQiOjE3MDA1Nzc2NzUsImlzcyI6IlRoZW1hIFRocmFrZXMiLCJuYmYiOjE3MDA1Nzc2NzV9.5jRysYJh_22PLg5m2Zw_QKy15BJuYiQFdbiXEPesOV8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "Title",
+							"value": "24歳、学生です",
+							"type": "text"
+						},
+						{
+							"key": "Time",
+							"value": "2023-12-12 11:45:14",
+							"type": "text"
+						},
+						{
+							"key": "Content",
+							"value": "やりますねぇ！",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8080/memo/create"
+			},
+			"response": []
+		},
+		{
+			"name": "MemoRetrieve",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiZXhwIjoxNzAwNTg0ODc1LCJpYXQiOjE3MDA1Nzc2NzUsImlzcyI6IlRoZW1hIFRocmFrZXMiLCJuYmYiOjE3MDA1Nzc2NzV9.5jRysYJh_22PLg5m2Zw_QKy15BJuYiQFdbiXEPesOV8",
+						"type": "text"
+					}
+				],
+				"url": "127.0.0.1:8080/memo/list"
+			},
+			"response": []
+		},
+		{
+			"name": "MemoUpdate",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6MSwiZXhwIjoxNzAwNTkyMzQwLCJpYXQiOjE3MDA1ODUxNDAsImlzcyI6IlRoZW1hIFRocmFrZXMiLCJuYmYiOjE3MDA1ODUxNDB9.wlmPfCMh3tYF54OSBC9TZrzOeVB68uKuK9jTvdL6CsE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "ID",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "Title",
+							"value": "24歳、学生です",
+							"type": "text"
+						},
+						{
+							"key": "Content",
+							"value": "やりますねぇ！",
+							"type": "text"
+						},
+						{
+							"key": "Status",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "Time",
+							"value": "2023-11-25 11:45:14",
+							"type": "text"
+						}
+					]
+				},
+				"url": "127.0.0.1:8080/memo/update"
+			},
+			"response": []
+		},
+		{
+			"name": "MemoDelete",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
